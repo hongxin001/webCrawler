@@ -26,15 +26,17 @@ for box in boxs:
         if b is None:
             continue;
         else:
-            print(b.text)
+
             s = li.text
             time = year + "-" + date[0:2] + "-" + date[3:5] + " " + s[0:5] + ":00"
             time = timestamp.datetime_timestamp(time);
             place = li.find("a").text
             c = b.text
-            print(time)
-            print(place)
+
             print("\n")
             if (db.zhiboba.find_one({"Title": c}, None) == None):
-                item = {"Title": c, "Address": place, "Time": time}
+                print(time)
+                print(place)
+                print(b.text)
+                item = {"Title": c, "Address": place, "Time": time,"Is":"0"}
                 db.zhiboba.save(item)
